@@ -27,7 +27,7 @@ app.use(router)
 app.use(Frontegg, {
   contextOptions: sanboxContextOptions,
   authOptions: {
-    // keepSessionAlive: true // Uncomment this in order to maintain the session alive
+    keepSessionAlive: true
   },
   hostedLoginBox: false,
   router,
