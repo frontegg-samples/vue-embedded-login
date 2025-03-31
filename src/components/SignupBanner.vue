@@ -5,7 +5,6 @@ import { ContextHolder } from '@frontegg/vue'
 
 const DEFAULT_SANDBOX_CONTEXT = {
   baseUrl: 'https://sandbox.frontegg.com',
-  clientId: '9af126b9-c35f-4e2d-a3f1-c261e22aaf4a',
   appId: 'ad6012f5-905f-430e-ad0d-64e85f0ba6c7',
 } as const
 
@@ -16,10 +15,10 @@ export default {
     onMounted(() => {
       const context = ContextHolder.for(undefined as any).getContext()
       const baseUrl = context.baseUrl
-      const clientId = context.clientId
+      const appId = context.appId
 
       isDefaultCredentials.value =
-        clientId === DEFAULT_SANDBOX_CONTEXT.clientId && baseUrl === DEFAULT_SANDBOX_CONTEXT.baseUrl
+        appId === DEFAULT_SANDBOX_CONTEXT.appId && baseUrl === DEFAULT_SANDBOX_CONTEXT.baseUrl
     })
 
     return {
@@ -30,11 +29,11 @@ export default {
 </script>
 
 <template>
-  <div :class="['signup-banner', { show: isDefaultCredentials }]">
+  <div :class="['signup-banner', { 'custom-credentials': !isDefaultCredentials }]">
     <div class="container signup-banner-wrapper">
       <p class="signup-banner-text">
         This sample uses Frontegg's default credentials. Sign up to use your own configurations.
-        <a href="https://portal.frontegg.com/signup" target="_blank" rel="noreferrer"> Sign up </a>
+        <a href="https://frontegg-prod.us.frontegg.com/oauth/account/sign-up" target="_blank" rel="noreferrer"> Sign up </a>
       </p>
       <div class="reference-links">
         <a
@@ -48,16 +47,16 @@ export default {
             height="12"
             viewBox="0 0 12 12"
             fill="#373739"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10.6667 10.6667H1.33333V1.33333H6V0H1.33333C0.593333 0 0 0.6 0 1.33333V10.6667C0 11.4 0.593333 12 1.33333 12H10.6667C11.4 12 12 11.4 12 10.6667V6H10.6667V10.6667ZM7.33333 0V1.33333H9.72667L3.17333 7.88667L4.11333 8.82667L10.6667 2.27333V4.66667H12V0H7.33333Z"
-              />
-            </svg>
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10.6667 10.6667H1.33333V1.33333H6V0H1.33333C0.593333 0 0 0.6 0 1.33333V10.6667C0 11.4 0.593333 12 1.33333 12H10.6667C11.4 12 12 11.4 12 10.6667V6H10.6667V10.6667ZM7.33333 0V1.33333H9.72667L3.17333 7.88667L4.11333 8.82667L10.6667 2.27333V4.66667H12V0H7.33333Z"
+            />
+          </svg>
           Visit Docs
         </a>
         <div class="third-party-links">
-          <a href="https://github.com/frontegg" target="_blank" rel="noreferrer" class="icon-link">
+          <a href="https://github.com/frontegg-samples/vue-hosted-login.git" target="_blank" rel="noreferrer" class="icon-link">
             <img src="/icons/github.svg" alt="github" />
           </a>
           <a
@@ -82,10 +81,6 @@ export default {
   padding: 32px 0;
   box-shadow: 0px 1px 4px 0px #7a7c813d;
   background-color: var(--classic-white);
-  display: none;
-}
-.signup-banner.show {
-  display: block;
 }
 
 .signup-banner-wrapper {
@@ -94,6 +89,14 @@ export default {
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
+}
+
+.custom-credentials .signup-banner-wrapper {
+  justify-content: center;
+}
+
+.custom-credentials .signup-banner-text {
+  display: none;
 }
 
 .signup-banner-text {

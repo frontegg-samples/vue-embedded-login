@@ -1,5 +1,5 @@
 <script lang="ts">
-import { useFrontegg } from '@frontegg/vue'
+import { useFrontegg, useFronteggAuthGuard } from '@frontegg/vue'
 import AppHeader from './components/AppHeader.vue'
 import SignupBanner from './components/SignupBanner.vue'
 export default {
@@ -9,6 +9,9 @@ export default {
   },
   setup() {
     const { fronteggLoaded } = useFrontegg()
+
+    // Uncomment to skip welcome page and redirect to login or app if authenticated
+    // useFronteggAuthGuard()
 
     return {
       fronteggLoaded,
