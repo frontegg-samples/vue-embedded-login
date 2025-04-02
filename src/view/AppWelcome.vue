@@ -12,7 +12,7 @@ export default {
       () => authState.isAuthenticated,
       (isAuthenticated) => {
         if (isAuthenticated) {
-          router.push('/account')
+          router.push('/home')
         }
       },
       { immediate: true }

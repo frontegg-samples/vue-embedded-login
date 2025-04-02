@@ -12,10 +12,10 @@ import './assets/main.css'
 const router = createRouter({
   history: createWebHistory('/'),
   routes: [
-    { name: 'HomePage', path: '/', component: AppWelcome },
+    { name: 'Welcome', path: '/', component: AppWelcome },
     {
-      name: 'AccountPage',
-      path: '/account',
+      name: 'Home',
+      path: '/home',
       component: AccountInfo,
     },
   ],
