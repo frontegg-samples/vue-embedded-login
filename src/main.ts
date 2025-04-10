@@ -30,6 +30,7 @@ app.use(Frontegg, {
     keepSessionAlive: true
   },
   hostedLoginBox: false,
+  customLoader: true,
   router,
 })
 
