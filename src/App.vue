@@ -26,4 +26,5 @@ export default {
     <router-view></router-view>
     <SignupBanner />
   </section>
+  <div v-else class="spinner"></div>
 </template>
